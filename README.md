@@ -1,2 +1,2 @@
-# fifoooooo.github.io.
+# fifoooooo.github.io
 Website creation task 
