@@ -4,7 +4,7 @@ title: "Eniola"
 
 ![](images/photo-of-me.png){width=250px}
 
-Hi, I'm Eniola. My main goal is to build a strong technical foundation through hands-on projects. After MDS, I'd like to continue in the data world, whether as an analyst, scientist, or engineer.
+Hi, I'm Eniola! I recently made the switch from working as a Business Analyst to pursuing a Master's in Data Science, driven by a growing interest in data modeling and machine learning. My main goal in this program is to build a strong technical foundation through hands-on projects. After MDS, I'd like to grow into a data scientist or data engineer, building on the analytical foundation I already have.
 
 
 
@@ -13,6 +13,3 @@ Hi, I'm Eniola. My main goal is to build a strong technical foundation through h
 
 
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>
