@@ -3,3 +3,13 @@ title: "About"
 ---
 
 About this site
+
+## Background: 
+I grew up in Nigeria, moved to Canada about 6 years ago to study Financial Economics at Carleton University for my Bachelor's Degree. I  worked as a Business Analyst before the MDS program. Over 3 years at Tangerine Bank, I worked across mobile, web, and platform teams, revamping the client onboarding process for the mobile app, pioneering Tangerine's new credit card in partnership with Scene+ [World Elite Mastercard](https://www.tangerine.ca/en/personal/spend/credit-cards/world-elite-mastercard) and later moving to the backend team to help improve the microservices powering  products.
+
+## Why Data Science? 
+This is a loaded question but I'll sum it up.
+I got tired of being a BA. I wanted something more and I just didn't know what that was until I worked alongside a data scientist. Watching them build models and experiment with LLMs showed me what that 'more' could look like.
+
+## Outside of Data Science
+I love walking (aiming for 9-10k steps a day), playing tennis, and rewatching Modern Family — I'm on my 6th full run through all 11 seasons.

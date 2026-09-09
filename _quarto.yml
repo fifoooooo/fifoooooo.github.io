@@ -3,18 +3,21 @@ project:
   output-dir: docs
 
 website:
-  title: "Eniola-Website"
+  title: "Eniola"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: about.qmd
+        text: About
+      - href: blog.qmd 
+        text: Blog
 
 format:
   html:
     theme:
-      - cosmo
-      - brand
+      dark: [darkly, brand]
+      light: [cosmo, brand]
     css: styles.css
     toc: true
 

@@ -1,5 +1,26 @@
 [
   {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "My first weeks in MDS\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nEniola Oladimeji\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Eniola",
+    "section": "",
+    "text": "Hi, I’m Eniola. My main goal is to build a strong technical foundation through hands-on projects. After MDS, I’d like to continue in the data world, whether as an analyst, scientist, or engineer.\nThis is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites"
+  },
+  {
+    "objectID": "posts/first-weeks/index.html",
+    "href": "posts/first-weeks/index.html",
+    "title": "My first weeks in MDS",
+    "section": "",
+    "text": "It genuinely feels like a month has already gone by. The pace here is fast, and it’s so easy to fall behind if you don’t stay on top of labs, worksheets, and readings. Thankfully I’m not doing this alone, I’ve made some wonderful friends along the way who make things feel a lot more manageable. My favorite courses so far have been DSCI 521 (Computing Platforms for Data Science) and DSCI 523 (Programming for Data Manipulation). Learning how to build a website, and organize and clean data, all within the first week, has me genuinely excited for what’s ahead. I know I’m in for a ride over the next 10 months. No, seriously, I can’t wait!\n\n\n\nFirst Day of Orientation."
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
@@ -7,10 +28,24 @@
     "text": "About this site"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Eniola-Website",
-    "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "objectID": "about.html#background",
+    "href": "about.html#background",
+    "title": "About",
+    "section": "Background:",
+    "text": "Background:\nI grew up in Nigeria, moved to Canada about 6 years ago to study Financial Economics at Carleton University for my Bachelor’s Degree. I worked as a Business Analyst before the MDS program. Over 3 years at Tangerine Bank, I worked across mobile, web, and platform teams, revamping the client onboarding process for the mobile app, pioneering Tangerine’s new credit card in partnership with Scene+ World Elite Mastercard and later moving to the backend team to help improve the microservices powering products."
+  },
+  {
+    "objectID": "about.html#why-data-science",
+    "href": "about.html#why-data-science",
+    "title": "About",
+    "section": "Why Data Science?",
+    "text": "Why Data Science?\nThis is a loaded question but I’ll sum it up. I got tired of being a BA. I wanted something more and I just didn’t know what that was until I worked alongside a data scientist. Watching them build models and experiment with LLMs showed me what that ‘more’ could look like."
+  },
+  {
+    "objectID": "about.html#outside-of-data-science",
+    "href": "about.html#outside-of-data-science",
+    "title": "About",
+    "section": "Outside of Data Science",
+    "text": "Outside of Data Science\nI love walking (aiming for 9-10k steps a day), playing tennis, and rewatching Modern Family — I’m on my 6th full run through all 11 seasons."
   }
 ]

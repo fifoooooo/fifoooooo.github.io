@@ -1,7 +1,18 @@
 ---
-title: "Eniola-Website"
+title: "Eniola"
 ---
+
+![](images/photo-of-me.png){width=250px}
+
+Hi, I'm Eniola. My main goal is to build a strong technical foundation through hands-on projects. After MDS, I'd like to continue in the data world, whether as an analyst, scientist, or engineer.
+
+
+
+
+
+
+
 
 This is a Quarto website.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>
