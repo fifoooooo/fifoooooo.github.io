@@ -4,7 +4,7 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "My first weeks in MDS\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nEniola Oladimeji\n\n\n\n\n\nNo matching items"
+    "text": "My first weeks in MDS\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nEniola Oladimeji\n\n\n\n\n\n\n\n\n\n\n\n\nHousing Finance Agency Portfolio\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -47,5 +47,12 @@
     "title": "About",
     "section": "Outside of Data Science",
     "text": "Outside of Data Science\nI love walking (aiming for 9-10k steps a day), playing tennis, and rewatching Modern Family — I’m on my 6th full run through all 11 seasons."
+  },
+  {
+    "objectID": "posts/housing-finance/index.html",
+    "href": "posts/housing-finance/index.html",
+    "title": "Housing Finance Agency Portfolio",
+    "section": "",
+    "text": "This data is from [Data.gov’s Housing Finance Agency Portfolio dataset] (https://catalog.data.gov/dataset/housing-finance-agency-portfolio?from_hint=eyJxIjoiZmluYW5jZSIsInNvcnQiOiJyZWxldmFuY2UifQ%3D%3D)\nThe goal of this analysis was to find out how many properties each management company manages per ward in Washington, DC.\n\n#reading in the data\nimport pandas as pd \nhousing = pd.read_csv(\"Housing_finance.csv\")\nhousing.head()\n\n#removing houses that do not have a management company\nhousing.dropna(subset=[\"Management Company\"])\n\n#pivot: for each management company, how many properties does it manage per ward\npivot = housing.pivot_table(index='Management Company', columns='Ward', values='Units').fillna(0)\npivot.max(axis = 1)\n\ntop_ward = pd.DataFrame({\n    \"Top Ward\": pivot.idxmax(axis=1),\n    \"Properties\": pivot.max(axis=1),\n}).sort_values(\"Properties\", ascending=False)\ntop_ward.head(10)\n\n\n\n\n\n\n\n\nTop Ward\nProperties\n\n\nManagement Company\n\n\n\n\n\n\nToll Brothers\n6\n562.0\n\n\nThe Franklin Johnston Group\nWard 7\n549.0\n\n\nBozzuto Management Company\nWard 6\n449.0\n\n\nEnterprise Residential, LLC\nWard 7\n410.0\n\n\nWC Smith\nWard 5\n405.0\n\n\nArco Management\nWard 8\n398.0\n\n\nCastle Management\nWard 8\n378.0\n\n\nWhitney Management Corp\nWard 7\n376.0\n\n\nEdgewood\nWard 6\n357.5\n\n\nNeighborhood Partners\nWard 5\n312.0\n\n\n\n\n\n\n\nProse saying what you did and what you found. First, I read in the data with pandas Next, I removed the properties that do not have a management company Then I created a pivot table that counts how many properties each company manages in each ward. Finally, I found the ward where each company manages the most properties"
   }
 ]

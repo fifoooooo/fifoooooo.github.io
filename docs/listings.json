@@ -2,7 +2,9 @@
   {
     "listing": "/blog.html",
     "items": [
-      "/posts/first-weeks/index.html"
+      "/posts/can_lang/index.html",
+      "/posts/first-weeks/index.html",
+      "/posts/housing-finance/index.html"
     ]
   }
 ]
