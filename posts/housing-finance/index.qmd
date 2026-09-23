@@ -1,15 +1,18 @@
 ---
+Author: Eniola Oladimeji
 title: "Housing Finance Agency Portfolio"
 date: 2026-09-22
 ---
 
-This data is from [Data.gov's Housing Finance Agency Portfolio dataset] (https://catalog.data.gov/dataset/housing-finance-agency-portfolio?from_hint=eyJxIjoiZmluYW5jZSIsInNvcnQiOiJyZWxldmFuY2UifQ%3D%3D)
+Data: [Housing Finance Agency Portfolio](https://catalog.data.gov/dataset/housing-finance-agency-portfolio), published by the DC Housing Finance Agency via Data.gov. Licence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 The goal of this analysis was to find out how many properties each management company manages per ward in Washington, DC.
 
 ```{python}
 #reading in the data
 import pandas as pd 
+import matplotlib.pyplot as plt
+
 housing = pd.read_csv("Housing_finance.csv")
 housing.head()
 

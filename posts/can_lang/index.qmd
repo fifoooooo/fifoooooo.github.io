@@ -1,9 +1,10 @@
 ---
+Author: Eniola Oladimeji
 title: "Languages in Canada"
 date: 2026-09-22
 ---
 
-This data is from [2016 Canadian Census, via the canlang package] (https://github.com/UBC-DSCI/introduction-to-datascience/blob/main/data/can_lang.csv)
+Data: [can_lang](https://github.com/ttimbers/canlang) from the canlang package by Tiffany Timbers (MIT licence). Source: Statistics Canada, Census of Population, 2016. Reproduced and distributed on an "as is" basis with the permission of Statistics Canada.
 
 The goal of this analysis is to explore how Aboriginal languages are used in Canada: how many people speak them at work relative to how many have them as a mother tongue, and which languages are being learned as second languages.
 
@@ -16,6 +17,8 @@ head(can_lang)
 ```
 
 ```{r}
+#| label: fig-top-aboriginal
+#| fig-cap: "Top 10 Aboriginal languages in Canada by number of mother-tongue speakers (2016 Census)."
 names(can_lang)
 #Filter for aboriginal languages 
 can_lang |>
