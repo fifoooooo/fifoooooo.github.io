@@ -11,6 +11,6 @@ Thankfully I'm not doing this alone, I've made some wonderful friends along the 
 My favorite courses so far have been DSCI 521 (Computing Platforms for Data Science) and DSCI 523 (Programming for Data Manipulation). Learning how to build a website, and organize and clean data, all within the first week, has me genuinely excited for what's ahead. I know I'm in for a ride over the next 10 months. 
 No, seriously, I can't wait!
 
-![First Day of Orientation.](mds-orientation-pic.png)
+![First Day of Orientation.](images/mds-orientation-pic.png)
 
 
