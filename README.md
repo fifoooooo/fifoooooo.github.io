@@ -1,26 +1,27 @@
-# Steps to follow: 
-Firstly, I went to my folder and made sure everything I had for the creation of my website was intact
-$ cd /Users/eniolaoladimeji/UBC\ MDS/fifoooooo.github.io\ \(my\ website\) 
-$ ls
-_quarto.yml                index.qmd
-about.qmd                  Milestone 2 submission.pdf
-blog.qmd                   posts
-docs                       README.md
-images                     styles.css
-
 ## Introduction
 
 My personal website, built with Quarto. It includes blog posts with data analysis in both Python and R.
 
 ## How I Built the site
 
+Firstly, I went to my folder and made sure everything I had for the creation of my website was intact
+```$ cd /Users/eniolaoladimeji/UBC\ MDS/fifoooooo.github.io\ \(my\ website\)```
+
+$ ls
+```_quarto.yml                index.qmd
+about.qmd                  Milestone 2 submission.pdf
+blog.qmd                   posts
+docs                       README.md
+images                     styles.css ```
+
 Install these first: 
-$ quarto --version
+```$ quarto --version
 1.10.18
 $ uv --version
 uv 0.12.5 (210d1f678 2026-08-14 aarch64-apple-darwin)
 $ R --version
 R version 4.6.1 (2026-06-24) -- "Happy Hop"
+```
 
 All commands below were run in my terminal from the repository root unless stated otherwise.
 
