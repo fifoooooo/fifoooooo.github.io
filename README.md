@@ -8,67 +8,80 @@ blog.qmd                   posts
 docs                       README.md
 images                     styles.css
 
-# Ran positron, verified Python & Quarto version
-$ positron .
-$ python --version
+## Introduction
+
+My personal website, built with Quarto. It includes blog posts with data analysis in both Python and R.
+
+## How I Built the site
+
+Install these first: 
 $ quarto --version
-$ python3 -m pip install jupyter
-$ quarto check jupyter
-$ uv init --bare --name my-website
-$ uv sync
-$ source .venv/bin/activate
-$ uv add pandas
-$ uv add numpy
-$ grep venv .gitignore
-$ echo ".venv/" >> .gitignore
+1.10.18
+$ uv --version
+uv 0.12.5 (210d1f678 2026-08-14 aarch64-apple-darwin)
+$ R --version
+R version 4.6.1 (2026-06-24) -- "Happy Hop"
 
-$ git status
-$ git add pyproject.toml uv.lock .gitignore
-$git push
+All commands below were run in my terminal from the repository root unless stated otherwise.
 
-$ mkdir -p posts/housing-finance
-posts/housing-finance
+1. Clone the repository and move into it:
 
-$ mv Housing_finance.csv posts/housing-finance/
-Housing_finance.csv -> posts/housing-finance/Housing_finance.csv
+```bash
+   git clone git@github.com:fifoooooo/fifoooooo.github.io.git
+   cd fifoooooo.github.io
+```
 
-$ mkdir -p posts/can_lang
-posts/can_lang
+2. Install the Python environment (Python 3.14, pandas, numpy, jupyter)
+   from `uv.lock`:
 
-$ mv can_lang.csv posts/can_lang
-can_lang.csv -> posts/can_lang/can_lang.csv
+```bash
+   uv sync
+```
 
-$ uv python pin 3.14
-Pinned `.python-version` to `3.14`
-$ uv add jupyter ipykernel
-$ uv run quarto render
+3. Install the R packages (tidyverse, testthat, and dependencies) from
+   `renv.lock`. The first run bootstraps renv automatically:
 
-# initializing R 
-$ renv::init()
-$ git add renv.lock
-$ git commit -m"Setup tidyverse and testthat for R"
-$ uv run quarto render
-$ git push
+```bash
+   Rscript -e 'renv::restore()'
+```
 
-In R console 
-> install.packages("yaml")
-> install.packages("tidyverse")
-> install.packages("testthat")
-> renv::snapshot()
+   Type `y` if asked to proceed. (Alternatively, open R in this folder
+   and run `renv::restore()` in the R console.)
 
-# Creating Index.qmd in each file
-$ ls *posts
-$ touch posts/can_lang/index.qmd
-$ touch posts/housing-finance/index.qmd
+4. Render the site:
 
-# making sure python was running in the right folder
-$ import os
-$ os.chdir("posts/housing-finance")
-$ quarto preview
+```bash
+   uv run quarto render
+```
 
-# Positron Terminal 
-Python 3.14.7 (uv: my-website) started.
-Python 3.14.7 (main, Aug 14 2026, 15:24:10) [Clang 22.1.3 ]
->>> import pandas as pd 
+## Viewing the site
+
+The built site is written to the `docs/` folder. To view it locally,
+open `docs/index.html` in a web browser, or run:
+
+```bash
+uv run quarto preview
+```
+
+and open the address it prints (e.g. `http://localhost:XXXX`).
+
+## Data
+
+Both datasets are included in the repository, so the build does not
+need the network to fetch data. (Steps 2 and 3 do need the network to
+download packages.)
+
+- `posts/housing-finance/Housing_finance.csv`: Housing Finance Agency
+  Portfolio, from [Data.gov](https://catalog.data.gov/dataset/housing-finance-agency-portfolio).
+- `posts/can_lang/can_lang.csv`: 2016 Canadian Census language data,
+  from the [canlang package](https://github.com/ttimbers/canlang) by
+  Tiffany Timbers, via the
+  [UBC-DSCI textbook repository](https://github.com/UBC-DSCI/introduction-to-datascience/blob/main/data/can_lang.csv).
+
+
+
+Personl Reference for me:
+For notes on how this project was originally set up, see [_setup-log.md](_setup-log.md).
+
 
 
