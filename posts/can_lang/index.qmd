@@ -1,0 +1,40 @@
+---
+title: "Languages in Canada"
+date: 2026-09-22
+---
+
+This data is from [2016 Canadian Census, via the canlang package] (https://github.com/UBC-DSCI/introduction-to-datascience/blob/main/data/can_lang.csv)
+
+The goal of this analysis is to explore how Aboriginal languages are used in Canada: how many people speak them at work relative to how many have them as a mother tongue, and which languages are being learned as second languages.
+
+```{r}
+library("yaml")
+library("testthat")
+library("tidyverse")
+can_lang <- read_csv("can_lang.csv")
+head(can_lang)
+```
+
+```{r}
+names(can_lang)
+#Filter for aboriginal languages 
+can_lang |>
+    filter(category == "Aboriginal languages")
+
+# Percentage of people who have Aboriginal languages as their mother tongue AND speak it at work
+can_lang |>
+    filter(category == "Aboriginal languages") |>
+    mutate(speak_at_work = most_at_work / mother_tongue * 100) |>
+    select(language, mother_tongue, most_at_work, speak_at_work) |>
+    arrange(desc(speak_at_work))    
+
+#Languages being learned as a second language 
+can_lang |>
+    filter(category == "Aboriginal languages") |>
+    mutate(second_lang = lang_known - mother_tongue)|>
+    select(language, second_lang)
+```
+
+Steps I took:
+First, I read in the data with `readr` package from tidyverse. Then I filtered the data for aboriginal languages spoken in Canada. 
+Next, I found the percentage of people who have Aboriginal languages as their mother tongue and speak it at work. Lastly and just for curiosity, found the aboriginal languages being learned as a second language. 

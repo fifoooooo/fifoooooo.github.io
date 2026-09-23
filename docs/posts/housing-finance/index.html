@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-09-08">
+<meta name="dcterms.date" content="2026-09-22">
 
 <title>Housing Finance Agency Portfolio – Eniola</title>
 <style>
@@ -340,7 +340,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 8, 2026</p>
+      <p class="date">September 22, 2026</p>
     </div>
   </div>
   
@@ -354,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>This data is from [Data.gov’s Housing Finance Agency Portfolio dataset] (https://catalog.data.gov/dataset/housing-finance-agency-portfolio?from_hint=eyJxIjoiZmluYW5jZSIsInNvcnQiOiJyZWxldmFuY2UifQ%3D%3D)</p>
 <p>The goal of this analysis was to find out how many properties each management company manages per ward in Washington, DC.</p>
-<div id="608699da" class="cell" data-execution_count="1">
+<div id="4b3fb7fd" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#reading in the data</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>housing <span class="op">=</span> pd.read_csv(<span class="st">"Housing_finance.csv"</span>)</span>
@@ -446,7 +446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Prose saying what you did and what you found. First, I read in the data with pandas Next, I removed the properties that do not have a management company Then I created a pivot table that counts how many properties each company manages in each ward. Finally, I found the ward where each company manages the most properties</p>
+<p>Steps I took: First, I read in the data with pandas Next, I removed the properties that do not have a management company Then I created a pivot table that counts how many properties each company manages in each ward. Finally, I found the ward where each company manages the most properties</p>
 
 
 

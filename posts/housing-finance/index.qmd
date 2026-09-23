@@ -1,6 +1,6 @@
 ---
 title: "Housing Finance Agency Portfolio"
-date: 2026-09-08
+date: 2026-09-22
 ---
 
 This data is from [Data.gov's Housing Finance Agency Portfolio dataset] (https://catalog.data.gov/dataset/housing-finance-agency-portfolio?from_hint=eyJxIjoiZmluYW5jZSIsInNvcnQiOiJyZWxldmFuY2UifQ%3D%3D)
@@ -20,6 +20,7 @@ housing.dropna(subset=["Management Company"])
 pivot = housing.pivot_table(index='Management Company', columns='Ward', values='Units').fillna(0)
 pivot.max(axis = 1)
 
+#most properties managed per company
 top_ward = pd.DataFrame({
     "Top Ward": pivot.idxmax(axis=1),
     "Properties": pivot.max(axis=1),
