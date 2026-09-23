@@ -354,28 +354,342 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>Data: <a href="https://catalog.data.gov/dataset/housing-finance-agency-portfolio">Housing Finance Agency Portfolio</a>, published by the DC Housing Finance Agency via Data.gov. Licence: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
 <p>The goal of this analysis was to find out how many properties each management company manages per ward in Washington, DC.</p>
-<div id="b2376f00" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#reading in the data</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>housing <span class="op">=</span> pd.read_csv(<span class="st">"Housing_finance.csv"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>housing.head()</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#removing houses that do not have a management company</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>housing.dropna(subset<span class="op">=</span>[<span class="st">"Management Company"</span>])</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#pivot: for each management company, how many properties does it manage per ward</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>pivot <span class="op">=</span> housing.pivot_table(index<span class="op">=</span><span class="st">'Management Company'</span>, columns<span class="op">=</span><span class="st">'Ward'</span>, values<span class="op">=</span><span class="st">'Units'</span>).fillna(<span class="dv">0</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>pivot.<span class="bu">max</span>(axis <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#most properties managed per company</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>top_ward <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Top Ward"</span>: pivot.idxmax(axis<span class="op">=</span><span class="dv">1</span>),</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Properties"</span>: pivot.<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">1</span>),</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>}).sort_values(<span class="st">"Properties"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>top_ward.head(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d3b97f7d" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>housing <span class="op">=</span> pd.read_csv(<span class="st">"Housing_finance.csv"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>housing.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">OBJECTID</th>
+<th data-quarto-table-cell-role="th">Projects</th>
+<th data-quarto-table-cell-role="th">Ward</th>
+<th data-quarto-table-cell-role="th">Units</th>
+<th data-quarto-table-cell-role="th">Year Built</th>
+<th data-quarto-table-cell-role="th">Address</th>
+<th data-quarto-table-cell-role="th">City</th>
+<th data-quarto-table-cell-role="th">State</th>
+<th data-quarto-table-cell-role="th">Zipcode</th>
+<th data-quarto-table-cell-role="th">Management Company</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Maturity Date</th>
+<th data-quarto-table-cell-role="th">Compliance Period End Date</th>
+<th data-quarto-table-cell-role="th">Asset Manager</th>
+<th data-quarto-table-cell-role="th">MAR_LATITUDE</th>
+<th data-quarto-table-cell-role="th">MAR_LONGITUDE</th>
+<th data-quarto-table-cell-role="th">MARID</th>
+<th data-quarto-table-cell-role="th">GlobalID</th>
+<th data-quarto-table-cell-role="th">EditDate</th>
+<th data-quarto-table-cell-role="th">x</th>
+<th data-quarto-table-cell-role="th">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>1</td>
+<td>1100 Eastern Ave</td>
+<td>Ward 7</td>
+<td>63.0</td>
+<td>2020</td>
+<td>1100 Eastern Ave</td>
+<td>Washington</td>
+<td>DC</td>
+<td>20019.0</td>
+<td>Residential One</td>
+<td>...</td>
+<td>2/19/2050</td>
+<td>2/15/2035 12:00:00 AM</td>
+<td>Sidney</td>
+<td>38.904137</td>
+<td>-76.924179</td>
+<td>74597.0</td>
+<td>91b76e76-bd8d-40c4-ad9c-51cb6b2ba648</td>
+<td>10/13/2022 8:33:29 PM</td>
+<td>406576.836719</td>
+<td>137366.454816</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2</td>
+<td>1164 Bladensburg Road</td>
+<td>Ward 5</td>
+<td>65.0</td>
+<td>2018</td>
+<td>1164 Bladensburg Road</td>
+<td>Washington</td>
+<td>DC</td>
+<td>20002.0</td>
+<td>Residential One</td>
+<td>...</td>
+<td>7/1/2038</td>
+<td>1/7/2033 12:00:00 AM</td>
+<td>Sidney</td>
+<td>38.905176</td>
+<td>-76.980377</td>
+<td>155908.0</td>
+<td>744841db-3620-4613-8e39-a1ef2a82fda0</td>
+<td>10/13/2022 8:33:29 PM</td>
+<td>401702.217868</td>
+<td>137479.165271</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>3</td>
+<td>1330 7th Street</td>
+<td>Ward 2</td>
+<td>136.0</td>
+<td>1974</td>
+<td>1330 7th Street, NW</td>
+<td>Washington</td>
+<td>DC</td>
+<td>20001.0</td>
+<td>Enterprise Residential, LLC</td>
+<td>...</td>
+<td>NaN</td>
+<td>1/26/2019 12:00:00 AM</td>
+<td>Clarence</td>
+<td>38.908118</td>
+<td>-77.022197</td>
+<td>238401.0</td>
+<td>d5fcaa76-64e7-4e63-aa5c-a4a7d9721a2b</td>
+<td>10/13/2022 8:33:29 PM</td>
+<td>398074.998757</td>
+<td>137805.822370</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>4</td>
+<td>1530 First Street - MDXL</td>
+<td>Ward 6</td>
+<td>101.0</td>
+<td>2021</td>
+<td>1530 First Street, SW</td>
+<td>Washington</td>
+<td>DC</td>
+<td>20024.0</td>
+<td>TM Associates</td>
+<td>...</td>
+<td>NaN</td>
+<td>9/25/2036 12:00:00 AM</td>
+<td>Sidney</td>
+<td>38.871226</td>
+<td>-77.011792</td>
+<td>61232.0</td>
+<td>13f55764-bcfd-407f-804f-e38dacb36dab</td>
+<td>10/13/2022 8:33:29 PM</td>
+<td>398976.908049</td>
+<td>133710.386013</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>5</td>
+<td>1550 First Street</td>
+<td>Ward 6</td>
+<td>76.0</td>
+<td>2019</td>
+<td>1550 First Street, SW</td>
+<td>Washington</td>
+<td>DC</td>
+<td>20024.0</td>
+<td>TM Associates</td>
+<td>...</td>
+<td>NaN</td>
+<td>11/17/2034 12:00:00 AM</td>
+<td>Sidney</td>
+<td>38.870977</td>
+<td>-77.011886</td>
+<td>60745.0</td>
+<td>3f02957c-b95e-400e-942d-f01620cb6a17</td>
+<td>10/13/2022 8:33:29 PM</td>
+<td>398968.708179</td>
+<td>133682.676291</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 33 columns</p>
+</div>
+</div>
+</div>
+<div id="401edd66" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>housing <span class="op">=</span> housing.dropna(subset<span class="op">=</span>[<span class="st">"Management Company"</span>])</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>housing[<span class="st">"Ward"</span>] <span class="op">=</span> <span class="st">"Ward "</span> <span class="op">+</span> housing[<span class="st">"Ward"</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.extract(<span class="vs">r"</span><span class="kw">(</span><span class="dv">\d</span><span class="op">+</span><span class="kw">)</span><span class="vs">"</span>)[<span class="dv">0</span>]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>housing[<span class="st">"Ward"</span>].unique()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>&lt;StringArray&gt;
+['Ward 7', 'Ward 5', 'Ward 2', 'Ward 6', 'Ward 8', 'Ward 4', 'Ward 1']
+Length: 7, dtype: str</code></pre>
+</div>
+</div>
+<div id="f0d3856b" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pivot <span class="op">=</span> housing.pivot_table(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span><span class="st">"Management Company"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span><span class="st">"Ward"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    values<span class="op">=</span><span class="st">"Units"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    aggfunc<span class="op">=</span><span class="st">"count"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    fill_value<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>pivot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Ward</th>
+<th data-quarto-table-cell-role="th">Ward 1</th>
+<th data-quarto-table-cell-role="th">Ward 2</th>
+<th data-quarto-table-cell-role="th">Ward 4</th>
+<th data-quarto-table-cell-role="th">Ward 5</th>
+<th data-quarto-table-cell-role="th">Ward 6</th>
+<th data-quarto-table-cell-role="th">Ward 7</th>
+<th data-quarto-table-cell-role="th">Ward 8</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Management Company</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">ABC Management</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">American Apartment Management</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Arco Management</th>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Armiger Management</th>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Atlantic Pacific Management</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Vision Realty</th>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">WC Smith</th>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Wesley Property Management</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Whitney Management Corp</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Winn Residential</th>
+<td>4</td>
+<td>0</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+
+<p>71 rows × 7 columns</p>
+</div>
+</div>
+</div>
+<div id="046efabe" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>top_ward <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Top Ward"</span>: pivot.idxmax(axis<span class="op">=</span><span class="dv">1</span>),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Properties"</span>: pivot.<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">1</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>}).sort_values(<span class="st">"Properties"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>top_ward.head(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
 
@@ -394,54 +708,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Toll Brothers</th>
-<td>6</td>
-<td>562.0</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">The Franklin Johnston Group</th>
-<td>Ward 7</td>
-<td>549.0</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">Bozzuto Management Company</th>
-<td>Ward 6</td>
-<td>449.0</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">Enterprise Residential, LLC</th>
-<td>Ward 7</td>
-<td>410.0</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">WC Smith</th>
-<td>Ward 5</td>
-<td>405.0</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">Arco Management</th>
-<td>Ward 8</td>
-<td>398.0</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">Castle Management</th>
-<td>Ward 8</td>
-<td>378.0</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">Whitney Management Corp</th>
-<td>Ward 7</td>
-<td>376.0</td>
-</tr>
-<tr class="odd">
 <th data-quarto-table-cell-role="th">Edgewood</th>
-<td>Ward 6</td>
-<td>357.5</td>
+<td>Ward 8</td>
+<td>11</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Neighborhood Partners</th>
-<td>Ward 5</td>
-<td>312.0</td>
+<th data-quarto-table-cell-role="th">WC Smith</th>
+<td>Ward 8</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Residential One</th>
+<td>Ward 8</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Vesta</th>
+<td>Ward 8</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">SOME</th>
+<td>Ward 8</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Brookfield Properties</th>
+<td>Ward 8</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">E &amp; G</th>
+<td>Ward 1</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Kettler</th>
+<td>Ward 7</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Columbus Property Management</th>
+<td>Ward 6</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Winn Residential</th>
+<td>Ward 1</td>
+<td>4</td>
 </tr>
 </tbody>
 </table>

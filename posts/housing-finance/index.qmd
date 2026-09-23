@@ -9,25 +9,36 @@ Data: [Housing Finance Agency Portfolio](https://catalog.data.gov/dataset/housin
 The goal of this analysis was to find out how many properties each management company manages per ward in Washington, DC.
 
 ```{python}
-#reading in the data
-import pandas as pd 
-import matplotlib.pyplot as plt
+#| warning: false
+import pandas as pd
 
 housing = pd.read_csv("Housing_finance.csv")
 housing.head()
+```
 
-#removing houses that do not have a management company
-housing.dropna(subset=["Management Company"])
+```{python}
+housing = housing.dropna(subset=["Management Company"])
+housing["Ward"] = "Ward " + housing["Ward"].astype(str).str.extract(r"(\d+)")[0]
+housing["Ward"].unique()
+```
 
-#pivot: for each management company, how many properties does it manage per ward
-pivot = housing.pivot_table(index='Management Company', columns='Ward', values='Units').fillna(0)
-pivot.max(axis = 1)
+```{python}
+pivot = housing.pivot_table(
+    index="Management Company",
+    columns="Ward",
+    values="Units",
+    aggfunc="count",
+    fill_value=0,
+)
+pivot
+```
 
-#most properties managed per company
+```{python}
 top_ward = pd.DataFrame({
     "Top Ward": pivot.idxmax(axis=1),
     "Properties": pivot.max(axis=1),
 }).sort_values("Properties", ascending=False)
+
 top_ward.head(10)
 ```
 
