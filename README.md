@@ -12,7 +12,8 @@ $ ls
 about.qmd                  Milestone 2 submission.pdf
 blog.qmd                   posts
 docs                       README.md
-images                     styles.css ```
+images                     styles.css 
+```
 
 Install these first: 
 ```$ quarto --version
