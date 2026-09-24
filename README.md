@@ -15,7 +15,8 @@ images                     styles.css
 ```
 
 Install these first: 
-```$ quarto --version
+```
+$ quarto --version
 1.10.18
 $ uv --version
 uv 0.12.5 (210d1f678 2026-08-14 aarch64-apple-darwin)
@@ -58,7 +59,13 @@ All commands below were run in my terminal from the repository root unless state
 ## Viewing the site
 
 The built site is written to the `docs/` folder. To view it locally,
-open `docs/index.html` in a web browser, or run:
+open in a web browser,
+
+```bash
+docs/index.html
+```
+
+or run:
 
 ```bash
 uv run quarto preview

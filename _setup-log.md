@@ -1,7 +1,7 @@
 ## For my personal logs
 
 # Ran positron, verified Python & Quarto version
-$ positron .
+```$ positron .
 $ python --version
 $ quarto --version
 $ python3 -m pip install jupyter
@@ -15,7 +15,7 @@ $ grep venv .gitignore
 $ echo ".venv/" >> .gitignore
 $ git status
 $ git add pyproject.toml uv.lock .gitignore
-$git push
+$ git push
 $ mkdir -p posts/housing-finance
 posts/housing-finance
 $ mv Housing_finance.csv posts/housing-finance/
@@ -27,7 +27,7 @@ can_lang.csv -> posts/can_lang/can_lang.csv
 $ uv python pin 3.14
 Pinned .python-version to 3.14
 $ uv add jupyter ipykernel
-$ uv run quarto render
+$ uv run quarto render```
 
 # initializing R 
 $ renv::init()
@@ -40,6 +40,7 @@ install.packages("yaml")
 install.packages("tidyverse")
 install.packages("testthat")
 renv::snapshot()
+
 # Creating Index.qmd in each file
 $ ls *posts
 $ touch posts/can_lang/index.qmd
@@ -49,6 +50,7 @@ $ touch posts/housing-finance/index.qmd
 $ import os
 $ os.chdir("posts/housing-finance")
 $ quarto preview
+
 # Positron Terminal 
 Python 3.14.7 (uv: my-website) started.
 Python 3.14.7 (main, Aug 14 2026, 15:24:10) [Clang 22.1.3 ]
