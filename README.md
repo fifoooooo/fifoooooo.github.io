@@ -59,7 +59,12 @@ All commands below were run in my terminal from the repository root unless state
 ## Viewing the site
 
 The built site is written to the `docs/` folder. To view it locally,
-open `docs/index.html` in a web browser, or run:
+open 
+
+```bash
+docs/index.html```
+
+in a web browser, or run:
 
 ```bash
 uv run quarto preview
