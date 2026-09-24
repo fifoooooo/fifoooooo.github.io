@@ -1,7 +1,7 @@
 ## For my personal logs
 
 # Ran positron, verified Python & Quarto version
-$ positron .
+```$ positron .
 $ python --version
 $ quarto --version
 $ python3 -m pip install jupyter
@@ -27,7 +27,7 @@ can_lang.csv -> posts/can_lang/can_lang.csv
 $ uv python pin 3.14
 Pinned .python-version to 3.14
 $ uv add jupyter ipykernel
-$ uv run quarto render
+$ uv run quarto render```
 
 # initializing R 
 $ renv::init()
