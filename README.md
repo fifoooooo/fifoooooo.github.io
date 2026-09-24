@@ -5,7 +5,6 @@ My personal website, built with Quarto. It includes blog posts with data analysi
 ## How I Built the site
 
 Firstly, I went to my folder and made sure everything I had for the creation of my website was intact
-```$ cd /Users/eniolaoladimeji/UBC\ MDS/fifoooooo.github.io\ \(my\ website\)```
 
 $ ls
 ```_quarto.yml                index.qmd
@@ -47,8 +46,8 @@ All commands below were run in my terminal from the repository root unless state
    Rscript -e 'renv::restore()'
 ```
 
-   Type `y` if asked to proceed. (Alternatively, open R in this folder
-   and run `renv::restore()` in the R console.)
+   Type `y` if asked to proceed. 
+   (Alternatively, open R in this folder and run `renv::restore()` in the R console.)
 
 4. Render the site:
 
@@ -82,7 +81,7 @@ download packages.)
 
 
 
-Personl Reference for me:
+Personal Reference for me:
 For notes on how this project was originally set up, see [_setup-log.md](_setup-log.md).
 
 
