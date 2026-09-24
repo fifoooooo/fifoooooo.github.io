@@ -16,7 +16,8 @@ images                     styles.css
 ```
 
 Install these first: 
-```$ quarto --version
+```
+$ quarto --version
 1.10.18
 $ uv --version
 uv 0.12.5 (210d1f678 2026-08-14 aarch64-apple-darwin)
