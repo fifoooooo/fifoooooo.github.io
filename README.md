@@ -5,7 +5,6 @@ My personal website, built with Quarto. It includes blog posts with data analysi
 ## How I Built the site
 
 Firstly, I went to my folder and made sure everything I had for the creation of my website was intact
-```$ cd /Users/eniolaoladimeji/UBC\ MDS/fifoooooo.github.io\ \(my\ website\)```
 
 $ ls
 ```_quarto.yml                index.qmd
