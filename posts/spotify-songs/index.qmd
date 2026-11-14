@@ -1,0 +1,12 @@
+---
+Author: Eniola Oladimeji
+title: "Spotify Song Attributes"
+date: 2026-11-15
+---
+
+Data: [Spotify Dataset](https://opendatascience.com/a-machine-learning-deep-dive-into-my-spotify-data/)
+
+This is a beginner Machine Learning project on a spotify dataset where I split a dataset to try to predict the kind of songs a listener would like
+
+
+The goal of this analysis was to find out 
