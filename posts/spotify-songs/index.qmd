@@ -125,4 +125,4 @@ test_score = best_model.score(X_test, y_test) #note to self: this is the evaluat
 test_score
 ```
 
-We can conclude that we get a 74% accuracy when predicting the preferences of the this listener.
+We can conclude that we get a 74% accuracy when predicting the preferences of the this listener using a decision tree.
