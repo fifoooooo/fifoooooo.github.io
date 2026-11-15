@@ -4,7 +4,8 @@ title: "Spotify Song Attributes"
 date: 2026-11-15
 ---
 
-Data: [Spotify Dataset](https://opendatascience.com/a-machine-learning-deep-dive-into-my-spotify-data/)
+Data: [Spotify Dataset] (https://www.kaggle.com/datasets/geomack/spotifyclassification/discussion/477241) 
+[Deep Dive: Spotify Dataset](https://opendatascience.com/a-machine-learning-deep-dive-into-my-spotify-data/)
 
 This is a beginner Machine Learning project on a spotify dataset where I split a dataset to try to predict the kind of songs a listener would like
 
@@ -77,3 +78,49 @@ spotify_tree = DecisionTreeClassifier(random_state=123)
 dt_scores_df = pd.DataFrame(cross_validate(spotify_tree, X_train, y_train, return_train_score=True)).mean()
 dt_scores_df
 ```
+
+We would go with the tree classifier because the score imprved from 0.55 to 0.66. 
+The test_score of 66% represents the fraction that the model labelled correctly which is 66% suggesting some songs were harder to predict. 
+train_score (training accuracy) is 99%; so in each fold the tree is scored on the same 10 inputs it was trained on, means it received a 99% average accuarcy when fitting the data.
+
+## Finding the best Tree Depth using a loop
+```{python}
+depths = np.arange(1, 25, 2)
+depths
+
+cv_train_scores = []
+cv_valid_scores = []
+
+for depth in depths:
+    # Create a tree for this depth and evaluate it on ten folds.
+    model = DecisionTreeClassifier(random_state=123, max_depth=depth)
+    scores = cross_validate(model, X_train, y_train, cv=10, return_train_score=True)
+    cv_train_scores.append(scores["train_score"].mean())
+    cv_valid_scores.append(scores["test_score"].mean())
+
+results_df = pd.DataFrame(
+    {"mean_train_score": cv_train_scores, "mean_cv_score": cv_valid_scores},
+    index=depths,
+)
+results_df
+
+#Plot
+results_df.plot(xlabel= "cv_train_scores", ylabel="cv_valid_scores")
+results_df[["mean_train_score", "mean_cv_score"]].plot();
+
+best_max_depth = results_df['mean_cv_score'].idxmax()
+best_max_depth
+```
+
+We see from the plot that as depth increases, the training score decreases because we now have a more complex model. 
+At high depth, the tree has memorized training data so its great on training and poor on new predictions (training error is low and validation error is very high)
+
+## Fit the final model and score on the test set 
+```{python}
+best_model = DecisionTreeClassifier(max_depth = best_max_depth, random_state = 123)
+best_model.fit(X_train, y_train)
+test_score = best_model.score(X_test, y_test) #note to self: this is the evaluation step taken which is basically getting the score 
+test_score
+```
+
+We can conclude that we get a 74% accuracy when predicting the preferences of the this listener.
