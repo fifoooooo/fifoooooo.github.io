@@ -8,5 +8,72 @@ Data: [Spotify Dataset](https://opendatascience.com/a-machine-learning-deep-dive
 
 This is a beginner Machine Learning project on a spotify dataset where I split a dataset to try to predict the kind of songs a listener would like
 
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np 
+import pandas as pd 
+from sklearn import tree
+from sklearn.dummy import DummyClassifier
+from sklearn.model_selection import cross_val_score, cross_validate, train_test_split
+from sklearn.tree import DecisionTreeClassifier
+```
 
-The goal of this analysis was to find out 
+We have 12 fictional songs as training songs (features) and 4 new songs (target)
+1 means Liked songs and 0 means Disliked songs
+```{python}
+toy_song_data = {
+"fast_tempo": [0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1],
+"high_energy": [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+"mostly_instrumental": [0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0],
+"target": [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
+}
+toy_df = pd.DataFrame(toy_song_data)
+toy_df
+
+new_song_data = {
+"fast_tempo": [1, 0, 0, 1],
+"high_energy": [1, 1, 0, 1],
+"mostly_instrumental": [0, 1, 1, 1],
+}
+new_songs_df = pd.DataFrame(new_song_data)
+new_songs_df
+```
+
+## Seperate, Creating a Tree, Fit & Score on Training Data
+```{python}
+X_train_toy = toy_df.drop(columns = ["target"])
+y_train_toy = toy_df["target"]
+toy_tree = DecisionTreeClassifier(random_state = 16) 
+toy_tree.fit(X_train_toy, y_train_toy)
+
+train_acc = toy_tree.score(X_train_toy,y_train_toy)
+train_acc
+```
+
+## Train Test Split
+```{python}
+spotify_df = pd.read_csv('spotify.csv', index_col=0)
+spotify_df.head()
+train_df, test_df = train_test_split(spotify_df, test_size= 0.2, random_state= 16)
+print(f"Training examples: {len(train_df):,}; test examples: {len(test_df):,}")
+
+train_df.info()
+train_df.describe()
+```
+
+## Baseline & Decision Tree Classifier
+A baseline supplies a reference score. 'Most frequent' dummy classifier always predicts the most common class in the data used to fit it
+```{python}
+X_train = train_df.drop(columns=["target", "song_title", "artist"])
+y_train = train_df["target"]
+X_test = test_df.drop(columns=["target", "song_title", "artist"])
+y_test = test_df["target"]
+
+dummy = DummyClassifier(strategy="most_frequent")
+dummy_score = cross_val_score(dummy, X_train,y_train, cv = 10).mean()
+dummy_score
+
+spotify_tree = DecisionTreeClassifier(random_state=123)
+dt_scores_df = pd.DataFrame(cross_validate(spotify_tree, X_train, y_train, return_train_score=True)).mean()
+dt_scores_df
+```
