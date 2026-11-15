@@ -1,5 +1,5 @@
 ---
-title: "Eniola"
+title: "Eniola Oladimeji"
 ---
 
 ![](images/photo-of-me.png){width=250px}

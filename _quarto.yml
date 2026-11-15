@@ -12,6 +12,14 @@ website:
         text: About
       - href: blog.qmd 
         text: Blog
+    right: 
+      - icon: linkedin
+        href: https://www.linkedin.com/in/eniolaoladimeji/
+        aria-label: LinkedIn
+      - icon: github
+        href: https://github.com/fifoooooo
+        aria-label: GitHub
+
 
 format:
   html:
