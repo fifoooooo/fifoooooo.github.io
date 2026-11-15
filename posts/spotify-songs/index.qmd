@@ -4,12 +4,14 @@ title: "Spotify Song Attributes"
 date: 2026-11-15
 ---
 
-Data: [Spotify Dataset] (https://www.kaggle.com/datasets/geomack/spotifyclassification/discussion/477241) 
-[Deep Dive: Spotify Dataset](https://opendatascience.com/a-machine-learning-deep-dive-into-my-spotify-data/)
+Data: [Spotify Dataset](https://www.kaggle.com/datasets/geomack/spotifyclassification/discussion/477241) 
+Deep Dive: [Spotify Deep Dive](https://opendatascience.com/a-machine-learning-deep-dive-into-my-spotify-data/)
 
 This is a beginner Machine Learning project on a spotify dataset where I split a dataset to try to predict the kind of songs a listener would like
 
 ```{python}
+#| message: false
+#| warning: false
 import matplotlib.pyplot as plt
 import numpy as np 
 import pandas as pd 
