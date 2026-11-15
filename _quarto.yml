@@ -24,8 +24,8 @@ website:
 format:
   html:
     theme:
-      dark: [darkly, brand]
-      light: [cosmo, brand]
+      dark: [superhero, brand]
+      light: [minty, brand]
     css: styles.css
     toc: true
 

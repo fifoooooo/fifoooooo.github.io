@@ -82,8 +82,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-445b8638c3d06994fee0907d791121c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-df07115ad9f15e2ef3479c789e6873c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-496a71ca20b0deb91189619ea2a1a39c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-f66171e334d55a94542fbdda1596c491.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -309,6 +309,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/eniolaoladimeji/"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/fifoooooo"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -364,7 +376,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>Data: <a href="https://www.kaggle.com/datasets/geomack/spotifyclassification/discussion/477241">Spotify Dataset</a> Deep Dive: <a href="https://opendatascience.com/a-machine-learning-deep-dive-into-my-spotify-data/">Spotify Deep Dive</a></p>
 <p>This is a beginner Machine Learning project on a spotify dataset where I split a dataset to try to predict the kind of songs a listener would like</p>
-<div id="b7541e85" class="cell" data-message="false" data-execution_count="1">
+<div id="3e2dfb4a" class="cell" data-message="false" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
@@ -374,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We have 12 fictional songs as training songs (features) and 4 new songs (target) 1 means Liked songs and 0 means Disliked songs</p>
-<div id="483967cd" class="cell" data-execution_count="2">
+<div id="9169e2e3" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>toy_song_data <span class="op">=</span> {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="st">"fast_tempo"</span>: [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>],</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="st">"high_energy"</span>: [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>],</span>
@@ -437,7 +449,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="seperate-creating-a-tree-fit-score-on-training-data" class="level2">
 <h2 class="anchored" data-anchor-id="seperate-creating-a-tree-fit-score-on-training-data">Seperate, Creating a Tree, Fit &amp; Score on Training Data</h2>
-<div id="64363021" class="cell" data-execution_count="3">
+<div id="bfc6f14f" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>X_train_toy <span class="op">=</span> toy_df.drop(columns <span class="op">=</span> [<span class="st">"target"</span>])</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>y_train_toy <span class="op">=</span> toy_df[<span class="st">"target"</span>]</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>toy_tree <span class="op">=</span> DecisionTreeClassifier(random_state <span class="op">=</span> <span class="dv">16</span>) </span>
@@ -452,7 +464,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="train-test-split" class="level2">
 <h2 class="anchored" data-anchor-id="train-test-split">Train Test Split</h2>
-<div id="4a5a7f31" class="cell" data-execution_count="4">
+<div id="826b9145" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>spotify_df <span class="op">=</span> pd.read_csv(<span class="st">'spotify.csv'</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>spotify_df.head()</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>train_df, test_df <span class="op">=</span> train_test_split(spotify_df, test_size<span class="op">=</span> <span class="fl">0.2</span>, random_state<span class="op">=</span> <span class="dv">16</span>)</span>
@@ -657,7 +669,7 @@ memory usage: 214.2 KB</code></pre>
 <section id="baseline-decision-tree-classifier" class="level2">
 <h2 class="anchored" data-anchor-id="baseline-decision-tree-classifier">Baseline &amp; Decision Tree Classifier</h2>
 <p>A baseline supplies a reference score. ‘Most frequent’ dummy classifier always predicts the most common class in the data used to fit it</p>
-<div id="5066d86c" class="cell" data-execution_count="5">
+<div id="80a9a97a" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> train_df.drop(columns<span class="op">=</span>[<span class="st">"target"</span>, <span class="st">"song_title"</span>, <span class="st">"artist"</span>])</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> train_df[<span class="st">"target"</span>]</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> test_df.drop(columns<span class="op">=</span>[<span class="st">"target"</span>, <span class="st">"song_title"</span>, <span class="st">"artist"</span>])</span>
@@ -671,8 +683,8 @@ memory usage: 214.2 KB</code></pre>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>dt_scores_df <span class="op">=</span> pd.DataFrame(cross_validate(spotify_tree, X_train, y_train, return_train_score<span class="op">=</span><span class="va">True</span>)).mean()</span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>dt_scores_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>fit_time       0.011364
-score_time     0.001301
+<pre><code>fit_time       0.011590
+score_time     0.001567
 test_score     0.680722
 train_score    0.999070
 dtype: float64</code></pre>
@@ -682,7 +694,7 @@ dtype: float64</code></pre>
 </section>
 <section id="finding-the-best-tree-depth-using-a-loop" class="level2">
 <h2 class="anchored" data-anchor-id="finding-the-best-tree-depth-using-a-loop">Finding the best Tree Depth using a loop</h2>
-<div id="d5785413" class="cell" data-execution_count="6">
+<div id="c849ac0b" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>depths <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">25</span>, <span class="dv">2</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>depths</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -730,7 +742,7 @@ dtype: float64</code></pre>
 </section>
 <section id="fit-the-final-model-and-score-on-the-test-set" class="level2">
 <h2 class="anchored" data-anchor-id="fit-the-final-model-and-score-on-the-test-set">Fit the final model and score on the test set</h2>
-<div id="387723d8" class="cell" data-execution_count="7">
+<div id="598ba03d" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>best_model <span class="op">=</span> DecisionTreeClassifier(max_depth <span class="op">=</span> best_max_depth, random_state <span class="op">=</span> <span class="dv">123</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>best_model.fit(X_train, y_train)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>test_score <span class="op">=</span> best_model.score(X_test, y_test) <span class="co">#note to self: this is the evaluation step taken which is basically getting the score </span></span>

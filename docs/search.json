@@ -9,7 +9,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Eniola",
+    "title": "Eniola Oladimeji",
     "section": "",
     "text": "Hi, I’m Eniola! I recently made the switch from working as a Business Analyst to pursuing a Master’s in Data Science, driven by a growing interest in data modeling and machine learning. My main goal in this program is to build a strong technical foundation through hands-on projects. After my Masters’, I’d like to grow into a data scientist or data engineering role, building on the analytical foundation I already have."
   },
@@ -39,7 +39,7 @@
     "href": "posts/spotify-songs/index.html#baseline-decision-tree-classifier",
     "title": "Spotify Song Attributes",
     "section": "Baseline & Decision Tree Classifier",
-    "text": "Baseline & Decision Tree Classifier\nA baseline supplies a reference score. ‘Most frequent’ dummy classifier always predicts the most common class in the data used to fit it\n\nX_train = train_df.drop(columns=[\"target\", \"song_title\", \"artist\"])\ny_train = train_df[\"target\"]\nX_test = test_df.drop(columns=[\"target\", \"song_title\", \"artist\"])\ny_test = test_df[\"target\"]\n\ndummy = DummyClassifier(strategy=\"most_frequent\")\ndummy_score = cross_val_score(dummy, X_train,y_train, cv = 10).mean()\ndummy_score\n\nspotify_tree = DecisionTreeClassifier(random_state=123)\ndt_scores_df = pd.DataFrame(cross_validate(spotify_tree, X_train, y_train, return_train_score=True)).mean()\ndt_scores_df\n\nfit_time       0.011364\nscore_time     0.001301\ntest_score     0.680722\ntrain_score    0.999070\ndtype: float64\n\n\nWe would go with the tree classifier because the score imprved from 0.55 to 0.66. The test_score of 66% represents the fraction that the model labelled correctly which is 66% suggesting some songs were harder to predict. train_score (training accuracy) is 99%; so in each fold the tree is scored on the same 10 inputs it was trained on, means it received a 99% average accuarcy when fitting the data."
+    "text": "Baseline & Decision Tree Classifier\nA baseline supplies a reference score. ‘Most frequent’ dummy classifier always predicts the most common class in the data used to fit it\n\nX_train = train_df.drop(columns=[\"target\", \"song_title\", \"artist\"])\ny_train = train_df[\"target\"]\nX_test = test_df.drop(columns=[\"target\", \"song_title\", \"artist\"])\ny_test = test_df[\"target\"]\n\ndummy = DummyClassifier(strategy=\"most_frequent\")\ndummy_score = cross_val_score(dummy, X_train,y_train, cv = 10).mean()\ndummy_score\n\nspotify_tree = DecisionTreeClassifier(random_state=123)\ndt_scores_df = pd.DataFrame(cross_validate(spotify_tree, X_train, y_train, return_train_score=True)).mean()\ndt_scores_df\n\nfit_time       0.011590\nscore_time     0.001567\ntest_score     0.680722\ntrain_score    0.999070\ndtype: float64\n\n\nWe would go with the tree classifier because the score imprved from 0.55 to 0.66. The test_score of 66% represents the fraction that the model labelled correctly which is 66% suggesting some songs were harder to predict. train_score (training accuracy) is 99%; so in each fold the tree is scored on the same 10 inputs it was trained on, means it received a 99% average accuarcy when fitting the data."
   },
   {
     "objectID": "posts/spotify-songs/index.html#finding-the-best-tree-depth-using-a-loop",
